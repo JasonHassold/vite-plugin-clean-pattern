@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-clean-pattern",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A vite plugin to remove/clean your build folder(s) using regex patterns to match specific files.",
   "author": "Jason Hassold (https://github.com/JasonHassold)",
   "license": "MIT",
@@ -19,17 +19,15 @@
     "vite-plugin-clean",
     "vite-plugin-clean-pattern"
   ],
-  "main": "dist/index.js",
-  "exports": {
-    "import": "./exports/import.mjs",
-    "require": "./exports/require.cjs"
-  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "files": [
-    "/dist",
-    "/exports"
+    "dist",
+    "LICENSE"
   ],
   "scripts": {
-    "build": "bun build ./index.ts --outdir ./dist --format esm"
+    "build": "unbuild"
   },
   "devDependencies": {
     "bun-types": "latest"
@@ -38,8 +36,12 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@rollup/pluginutils": "^5.0.4",
+    "@types/node": "^20.5.9",
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
+    "typescript": "^5.2.2",
+    "unbuild": "^2.0.0",
     "vite": "^4.4.9"
   }
 }
