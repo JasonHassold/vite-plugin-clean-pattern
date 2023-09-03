@@ -64,7 +64,7 @@ import cleanPlugin from 'vite-plugin-clean-pattern';
 export default {
   plugins: [cleanPlugin(
     {
-      targetFiles: ['dist', 'test']
+      targetFiles: [{ dirPath: 'dist', fileMatchPattern: '^vite_.*_[0-9a-z]{8}' }, ...]
     }
   )],
 }
