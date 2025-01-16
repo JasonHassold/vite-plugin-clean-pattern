@@ -13,8 +13,7 @@ const { existsSync, readdirSync, statSync, unlinkSync, rmdirSync } = fs__default
 function cleanFiles(config) {
   const rootDirectory = process.cwd();
   let dirPath, fileMatchPattern;
-  if (typeof config === "string")
-    dirPath = resolve(rootDirectory, config);
+  if (typeof config === "string") dirPath = resolve(rootDirectory, config);
   else {
     dirPath = resolve(rootDirectory, config.dirPath);
     fileMatchPattern = config.fileMatchPattern;
@@ -22,8 +21,7 @@ function cleanFiles(config) {
   if (existsSync(dirPath)) {
     const files = readdirSync(dirPath);
     files.forEach((file) => {
-      if (fileMatchPattern && !file.match(fileMatchPattern))
-        return;
+      if (fileMatchPattern && !file.match(fileMatchPattern)) return;
       console.log(`Deleting ${file}`);
       const path2 = join(dirPath, file);
       if (statSync(path2).isDirectory()) {
@@ -48,8 +46,7 @@ const cleanPlugin = (_opt) => {
     apply: "build",
     buildStart: (config) => {
       const { targetFiles } = options;
-      if (!targetFiles)
-        return;
+      if (!targetFiles) return;
       if (Array.isArray(targetFiles)) {
         for (let i = 0, len = targetFiles.length; i < len; i++) {
           cleanFiles(targetFiles[i]);
