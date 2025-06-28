@@ -9,4 +9,4 @@ interface ConfigOptions {
 }
 declare const cleanPlugin: (_opt?: ConfigOptions) => PluginOption;
 
-export { cleanPlugin as default };
+export = cleanPlugin;
